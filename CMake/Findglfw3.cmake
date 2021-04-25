@@ -5,6 +5,10 @@
 # )
 # message(Warning ">>>> xx${GLFW_INSTALL_DIR} ${PROJECT_BINARY_DIR}")
 
+if (GLFW_LOCATION MATCHES OFF)
+  message("The GLFW_LOCATION option must be specified with the full directory name of the GLFW installation")
+endif()
+
 find_library(
     GLFW_LIBRARY
     NAMES glfw3
@@ -12,7 +16,7 @@ find_library(
     # PATHS C:/software/lib/glfw64/lib-vc2019/
 
     # PATHS C:/software/lib/glfw64/lib-vc2019/
-    HINTS C:/software/lib/glfw64/
+    HINTS ${GLFW_LOCATION}
     PATH_SUFFIXES lib-vc2019/
     )
 
@@ -23,7 +27,7 @@ add_library(glfw3 STATIC IMPORTED)
 #     NAMES glfw3.h
 #     HINTS C:/software/lib/glfw64/include
 # )
-set(GLFW_INCLUDE_DIR C:/software/lib/glfw64/include)
+set(GLFW_INCLUDE_DIR "${GLFW_LOCATION}/include")
 
 include(FindPackageHandleStandardArgs)
 

@@ -25,14 +25,14 @@ static const char *vertex_shader_src = "#version 110 \n"
 // " void main()  { \n"
 // "   \n"
 // "   gl_FragColor = vec4(vec3(0.0,gl_FragCoord.x/800.0,0.0),1.0);"
-// " }";
+// " }";  
 
 static const char *fragment_shader_src = "#version 110\n"
                                          " uniform vec4 boundaries;"  
                                          " void main()  { \n"
                                          "   float x0, y0,x ,y;\n"
                                          "   x0 = gl_FragCoord.x*((boundaries.z - boundaries.x)/800.0) + boundaries.x ;\n"
-                                         "   y0 = gl_FragCoord.y*((boundaries.w - boundaries.y)/800.0) + boundaries.y ;\n"
+                                         "   y0 = gl_FragCoord.y*((boundaries.w - boundaries.y)/600.0) + boundaries.y ;\n"
                                          "   int maxIteration, iteration;\n"
                                          "   maxIteration = 256;\n"
                                          "   iteration = 0;\n"
@@ -43,7 +43,7 @@ static const char *fragment_shader_src = "#version 110\n"
                                          "      x = tmp;\n"
                                          "   iteration = iteration + 1;\n"
                                          "   }\n"
-                                         "   gl_FragColor = vec4(vec3(0.0,float(iteration)/256.0,0.0),1.0);"
+                                         "   gl_FragColor = vec4(vec3(0.0, float(iteration)/256.0, 0.0 ),1.0);"
                                          " }";
 
 void mouseCallback(GLFWwindow* window, int button, int action, int mods) {

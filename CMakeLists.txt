@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(myshaderexperiment VERSION 0.1.0)
 
+option(GLFW_LOCATION "location for the GLFW library" "")
+
 include(CTest)
 enable_testing()
 
